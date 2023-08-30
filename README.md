@@ -5,7 +5,7 @@
 ## Description
 
 This automation solution is designed for the deployment of **Single Tier VPC** using IBM Cloud Schematics or using CLI. 
-The SAP solution will be deployed on top of **Red Hat Enterprise Linux 7.6 for SAP** in an existing IBM Cloud Gen2 VPC, using an existing bastion host with secure remote SSH access.
+The SAP solution will be deployed on top of **Red Hat Enterprise Linux 8.6 for SAP** in an existing IBM Cloud Gen2 VPC, using an existing bastion host with secure remote SSH access.
 
 Deployment can be done in two ways: 
 
@@ -18,7 +18,7 @@ The VPC contains one subnet and one security group having three rules:
 - Allow inbound DNS traffic (UDP port 53)
 - Allow inbound SSH traffic (TCP port 22)
 
-The VSI is configured with Red Hat Enterprise Linux 7.6 for SAP Applications (amd64), has two SSH keys configured to access as root user on SSH, and two storage volumes created:
+The VSI is configured with Red Hat Enterprise Linux 8.6 for SAP Applications (amd64), has two SSH keys configured to access as root user on SSH, and two storage volumes created:
 - One Swap volume of 48Gb
 - One data volume of 10Gb
 
@@ -39,7 +39,7 @@ ZONE | The cloud zone where to deploy the solution. <br /> Sample value: eu-de-2
 VPC | EXISTING VPC name. The list of VPCs is available [here](https://cloud.ibm.com/vpc-ext/network/vpcs)
 SUBNET | EXISTING Subnet name. The list of Subnets is available [here](https://cloud.ibm.com/vpc-ext/network/subnets).
 SECURITY_GROUP | EXISTING Security group name. The list of Security Groups is available [here](https://cloud.ibm.com/vpc-ext/network/securityGroups).
-APP-IMAGE | The OS image used for SAP Application VSI. A list of images is available [here](https://cloud.ibm.com/docs/vpc?topic=vpc-about-images).<br /> Default value: ibm-redhat-7-6-amd64-sap-applications-3
+APP-IMAGE | The OS image used for SAP Application VSI. A list of images is available [here](https://cloud.ibm.com/docs/vpc?topic=vpc-about-images).<br /> Default value: ibm-redhat-8-6-amd64-sap-applications-2
 
 **Obs***: <br />
 - Sensitive - The variable value is not displayed in your Schematics logs and it is hidden in the input field.<br />
@@ -58,7 +58,7 @@ RESOURCE_GROUP  = Resource group Default: wes-automation
 SUBNET			= Subnet name Default: ic4sap-subnet
 HOSTNAME		= VSI Hostname Default: test-vsi
 PROFILE			= VSI Profile Default: bx2-4x16
-IMAGE			= VSI OS Image Default: ibm-redhat-7-6-amd64-sap-applications-3
+IMAGE			= VSI OS Image Default: ibm-redhat-8-6-amd64-sap-applications-2
 SSH_KEYS		= SSH Keys ID list to access the VSI
 SWAP			= SWAP Size Default: 48
 VOL1			= Volume 1 Size Default: 10
@@ -144,3 +144,6 @@ terraform destroy
 # you will be asked for the following sensitive variables as a destroy confirmation phase:
 'ibmcloud_api_key'.
 ```
+The Terraform version used for deployment should be >= 1.3.6. 
+Note: The deployment was tested with Terraform 1.3.6
+
