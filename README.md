@@ -29,8 +29,8 @@ The following parameters can be set in the Schematics workspace: VPC, Subnet, Se
 
 Parameter | Description
 ----------|------------
-ibmcloud_api_key | IBM Cloud API key (Sensitive* value).
-private_ssh_key | id_rsa private key content (Sensitive* value).
+IBMCLOUD_API_KEY | IBM Cloud API key (Sensitive* value).
+PRIVATE_SSH_KEY | id_rsa private key content (Sensitive* value).
 SSH_KEYS | List of SSH Keys UUIDs that are allowed to SSH as root to the VSI. Can contain one or more IDs. The list of SSH Keys is available [here](https://cloud.ibm.com/vpc-ext/compute/sshKeys). <br /> Sample input (use your own SSH UUIDs from IBM Cloud):<br /> [ "r010-57bfc315-f9e5-46bf-bf61-d87a24a9ce7a" , "r010-3fcd9fe7-d4a7-41ce-8bb3-d96e936b2c7e" ]
 BASTION_FLOATING_IP | The FLOATING IP from the Bastion Server.
 RESOURCE_GROUP | An EXISTING  Resource Group for VSIs and Volumes resources. <br /> Default value: "Default". The list of Resource Groups is available [here](https://cloud.ibm.com/account/resource-groups).
@@ -39,7 +39,7 @@ ZONE | The cloud zone where to deploy the solution. <br /> Sample value: eu-de-2
 VPC | EXISTING VPC name. The list of VPCs is available [here](https://cloud.ibm.com/vpc-ext/network/vpcs)
 SUBNET | EXISTING Subnet name. The list of Subnets is available [here](https://cloud.ibm.com/vpc-ext/network/subnets).
 SECURITY_GROUP | EXISTING Security group name. The list of Security Groups is available [here](https://cloud.ibm.com/vpc-ext/network/securityGroups).
-APP-IMAGE | The OS image used for SAP Application VSI. A list of images is available [here](https://cloud.ibm.com/docs/vpc?topic=vpc-about-images).<br /> Default value: ibm-redhat-8-6-amd64-sap-applications-2
+APP_IMAGE | The OS image used for SAP Application VSI. A list of images is available [here](https://cloud.ibm.com/docs/vpc?topic=vpc-about-images).<br /> Default value: ibm-redhat-8-6-amd64-sap-applications-2
 
 **Obs***: <br />
 - Sensitive - The variable value is not displayed in your Schematics logs and it is hidden in the input field.<br />
@@ -51,17 +51,17 @@ APP-IMAGE | The OS image used for SAP Application VSI. A list of images is avail
 For the script configuration edit your VPC, Subnet, Security group, Resource group, Hostname, Profile, Image, SSH Keys and disk sizes in `input.auto.tfvars` like so:
 ```shell
 REGION          = Cloud Region Default: eu-de
-ZONE			= Cloud Zone Default: eu-de-2
-VPC			    = VPC name Default: ic4sap
+ZONE		= Cloud Zone Default: eu-de-2
+VPC             = VPC name Default: ic4sap
 SECURITY_GROUP  = Security group name Default: ic4sap-securitygroup
 RESOURCE_GROUP  = Resource group Default: wes-automation
-SUBNET			= Subnet name Default: ic4sap-subnet
-HOSTNAME		= VSI Hostname Default: test-vsi
-PROFILE			= VSI Profile Default: bx2-4x16
-IMAGE			= VSI OS Image Default: ibm-redhat-8-6-amd64-sap-applications-2
-SSH_KEYS		= SSH Keys ID list to access the VSI
-SWAP			= SWAP Size Default: 48
-VOL1			= Volume 1 Size Default: 10
+SUBNET	        = Subnet name Default: ic4sap-subnet
+HOSTNAME        = VSI Hostname Default: test-vsi
+PROFILE		= VSI Profile Default: bx2-4x16
+IMAGE		= VSI OS Image Default: ibm-redhat-8-6-amd64-sap-applications-2
+SSH_KEYS	= SSH Keys ID list to access the VSI
+SWAP		= SWAP Size Default: 48
+VOL1		= Volume 1 Size Default: 10
 ```
 
 **Files description and structure**
@@ -128,7 +128,7 @@ For planning phase:
 
 ```shell
 terraform plan -out plan1
-# you will be asked for the following sensitive variables: 'ibmcloud_api_key'.
+# you will be asked for the following sensitive variables: 'IBMCLOUD_API_KEY'.
 ```
 
 For apply phase:
@@ -142,7 +142,7 @@ For destroy:
 ```shell
 terraform destroy
 # you will be asked for the following sensitive variables as a destroy confirmation phase:
-'ibmcloud_api_key'.
+'IBMCLOUD_API_KEY'.
 ```
 The Terraform version used for deployment should be >= 1.3.6. 
 Note: The deployment was tested with Terraform 1.3.6

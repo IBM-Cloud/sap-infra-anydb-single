@@ -31,6 +31,13 @@ SSH_KEYS = [ "" ]
 # List of SSH Keys UUIDs that are allowed to SSH as root to the VSI. The SSH Keys should be created for the same region as the VSI. The list of available SSH Keys UUIDs: https://cloud.ibm.com/vpc-ext/compute/sshKeys
 # Example: SSH_KEYS = ["r010-8f72b994-c17f-4500-af8f-d05680374t3c", "r011-8f72v884-c17f-4500-af8f-d05900374t3c"]
 
+ID_RSA_FILE_PATH = "ansible/id_rsa"
+# Input your existing id_rsa private key file path in OpenSSH format with 0600 permissions.
+# This private key it is used only during the terraform provisioning and it is recommended to be changed after the SAP deployment.
+# It must contain the relative or absoute path from your Bastion.
+# Examples: "ansible/id_rsa_abap_db2_std" , "~/.ssh/id_rsa_abap_db2_std" , "/root/.ssh/id_rsa".
+
+
 ##########################################################
 # VSI variables:
 ##########################################################
@@ -49,11 +56,11 @@ IMAGE = "ibm-redhat-8-6-amd64-sap-applications-2"
 # The list of available VPC Operating Systems supported by SAP: SAP note '2927211 - SAP Applications on IBM Virtual Private Cloud (VPC) Infrastructure environment' https://launchpad.support.sap.com/#/notes/2927211; The list of all available OS images: https://cloud.ibm.com/docs/vpc?topic=vpc-about-images
 # Example: IMAGE = "ibm-redhat-8-6-amd64-sap-applications-2" 
 
-SWAP = ""
+SWAP = "48"
 # SWAP volume size, in GB. Default value: 48 GB
 # Example: SWAP = "48"
 
-VOL1 = ""
+VOL1 = "10"
 # Volume 1 size, in GB. Default value: 10 GB
 # Example: VOL1 = "10"
 
