@@ -34,19 +34,6 @@ resource "null_resource" "check-bastion-resources" {
              "dos2unix /tmp/${var.HOSTNAME}.error.sh",
            ]
          }
-
-#         provisioner "file" {
-#           source      = "modules/precheck-ssh-exec/sap-paths-${var.HOSTNAME}"
-#           destination = "/tmp/sap-paths-${var.HOSTNAME}"
-#         }
-
-
-#         provisioner "remote-exec" {
-#             inline = [
-#              "for i in `cat /tmp/sap-paths-${var.HOSTNAME}`; do  /tmp/check_file-${var.HOSTNAME}.sh $i; done > /tmp/${var.HOSTNAME}.precheck.log",
-#            ]
-#         }
-
     }
 
 

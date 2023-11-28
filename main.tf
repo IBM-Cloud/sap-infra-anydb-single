@@ -25,8 +25,6 @@ module "precheck-ssh-exec" {
   
 }
 
-
-
 module "vpc-subnet" {
   source		= "./modules/vpc/subnet"
   depends_on	= [ module.precheck-ssh-exec ]
