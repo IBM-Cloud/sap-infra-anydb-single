@@ -18,8 +18,6 @@ The VSI is configured with **Red Hat Enterprise Linux 8.6 for SAP Applications (
 - One Swap volume (default size 48 GB)
 - One data volume (default size 10 GB)
 
-In order to track the events specific to the resources deployed by this solution, the [IBM Cloud Activity Tracker](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-getting-started#gs_ov) to be used should be specified. IBM Cloud Activity Tracker service collects and stores audit records for API calls made to resources that run in the IBM Cloud. It can be used to monitor the activity of your IBM Cloud account, investigate abnormal activity and critical actions, and comply with regulatory audit requirements. In addition, you can be alerted on actions as they happen.
-
 ## Contents:
 
 - [1. Prerequisites](#1-prerequisites)
@@ -57,12 +55,6 @@ PROFILE | The profile used for the VSI. A list of profiles is available [here](h
 HOSTNAME | The hostname for VSI. Each hostname should be up to 13 characters as required by SAP.<br> For more information on rules regarding hostnames for SAP systems, check [SAP Note 611361].
 SWAP | The size of the SWAP volume, in GB. Default value: 48
 VOL1 | The size of Volume 1, in GB. Default value: 10
-
-**Activity Tracker input parameters:**
-
-Parameter | Description
-----------|------------
-ATR_NAME | The name of the EXISTING Activity Tracker instance, in the same region chosen for SAP system deployment. The list of available Activity Tracker is available [here](https://cloud.ibm.com/observe/activitytracker)
 
 **Obs***: <br />
 - Sensitive - The variable value is not displayed in your Schematics logs and it is hidden in the input field.<br />
@@ -141,14 +133,6 @@ SWAP = "48"
 VOL1 = "10"
 # Volume 1 size, in GB. Default value: 10 GB
 # Example: VOL1 = "10"
-
-##########################################################
-# Activity Tracker variables:
-##########################################################
-
-ATR_NAME = "Activity-Tracker-SAP-eu-de"
-# The name of the EXISTENT Activity Tracker instance, in the same region chosen for SAP system deployment.
-# Example: ATR_NAME="Activity-Tracker-SAP-eu-de"
 
 ```
 

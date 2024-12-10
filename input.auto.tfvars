@@ -64,12 +64,3 @@ SWAP = "48"
 VOL1 = "10"
 # Volume 1 size, in GB. Default value: 10 GB
 # Example: VOL1 = "10"
-
-##########################################################
-# Activity Tracker variables:
-##########################################################
-
-ATR_NAME = ""
-# The name of the EXISTENT Activity Tracker instance, in the same region chosen for SAP system deployment.
-# Example: ATR_NAME="Activity-Tracker-SAP-eu-de"
-
